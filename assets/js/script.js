@@ -14,8 +14,8 @@ const mouse = {
 };
 
 const touch = {
-  x: undefined,
-  y: undefined,
+  x: mouse.x,
+  y: mouse.y,
 }
 
 window.addEventListener('mousemove', function (e) {
@@ -25,7 +25,7 @@ window.addEventListener('mousemove', function (e) {
 
 // touchScreen
 
-window.addEventListener("touchmove", function (e) {
+canvas.addEventListener("touchmove", function (e) {
   touch.x = e.x;
   touch.y = e.y
 });
