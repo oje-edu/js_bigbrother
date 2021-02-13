@@ -6,14 +6,28 @@ canvas.height = window.innerHeight;
 let eyes = [];
 let theta;
 
+
+// mouse
 const mouse = {
   x: undefined,
   y: undefined,
 };
 
+const touch = {
+  x: undefined,
+  y: undefined,
+}
+
 window.addEventListener('mousemove', function (e) {
   mouse.x = e.x;
   mouse.y = e.y;
+});
+
+// touchScreen
+
+window.addEventListener("touchmove", function (e) {
+  touch.x = e.x;
+  touch.y = e.y
 });
 
 class Eye {
@@ -30,8 +44,8 @@ class Eye {
     ctx.fill();
     ctx.closePath();
 
-    let dx = mouse.x - this.x;
-    let dy = mouse.y - this.y;
+    let dx = mouse.x - this.x || touch.x - this.x;
+    let dy = mouse.y - this.y || touch.y - this.y;
     // ATAN2 <3
     theta = Math.atan2(dy, dx);
 
